@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>同一个BFC下外边距会发生折叠</title>
+  <style>
+    .normal {
+      width: 100px;
+      height: 100px;
+      background: #eee;
+      margin: 100px;
+    }
+    .bfc {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="normal"></div>
+  <div class="normal"></div>
+  <div class="bfc">
+    <div class="normal"></div>
+  </div>
+  <div class=bfc>
+    <div class="normal"></div>
+  </div>
+</body>
+</html>
