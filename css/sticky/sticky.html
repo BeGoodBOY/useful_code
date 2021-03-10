@@ -13,21 +13,31 @@
     }
     .sticky {
       position: sticky;
+      position: -webkit-sticky;
       top: 100px;
       width: 100%;
       height: 20px;
       background-color: #000;
     }
+    .fixed {
+      position:fixed;
+    }
   </style>
 </head>
 <body>
   <div class="height1"></div>
-  <div class="sticky"></div>
+  <div id="element" class="sticky"></div>
   <div class="height1"></div>
   <script>
     // 兼容
     if (CSS.supports("position", "sticky") || CSS.supports("position", "-webkit-sticky")) {
     // 支持 sticky
+    }else {
+      var element = document.querySelector('#element');
+      var offsetTop = element.offsetTop;
+      document.addEventListener('scroll', function() {
+        window.scrollY >= offsetTop ? element.classList.add('fixed'): element.classList.remove('fixed')
+      })
     }
     //坑
     // 1、sticky 不会触发 BFC。
