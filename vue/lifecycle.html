@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       {{ message }}
+       <div>
+         <p>q: <input v-model="question"></p>
+         <p>answer: {{ answer }}</p>
+       </div>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello world',
+      question: '',
+      answer: 'init answer'
+    },
+    methods: {
+      showMsg() {
+        console.log(this.message)
+      }
+    },
+    computed: {
+      resMessage() {
+        return `computed: ${this.message}`
+      }
+    },
+    watch: {
+      question(newQ) {
+        this.answer = `I don't know ${newQ}`
+        console.log(`watch: ${this.answer}`)
+      }
+    },
+    beforeCreate() {
+      // 在实例创建以前调用
+      // 没有实例化，数据访问不到
+      console.log('BeforeCreated:')
+      console.log(this.$el)
+      console.log(this.$data)
+      console.log(this.message)
+      this.showMsg();
+      console.log(this.answer)
+    },
+    created() {
+      // 实例被创建完后调用
+      // 能拿到数据
+      // 能修改数据
+      // 修改数据不会触发updated beforeUpdate钩子函数
+      // 一般在这里进行数据初始化
+      // computed watch methods
+      console.log('created:')
+      console.log(this.$el)
+      console.log(this.$data)
+      console.log(this.message)
+      this.showMsg()
+      console.log(this.resMessage) 
+      // this.question = 'watch is here'
+      // console.log(`answer: ${this.answer}`)
+    },
+    beforeMount() {
+      // 真实dom节点挂载之前
+      // 修改数据不会触发updated beforeUpdate钩子函数
+      console.log('beforeMount:')
+      console.log(this.$el)
+      console.log(this.$data)
+      console.log(this.message)
+    },
+    mounted() {
+      // dom节点已挂载
+      // 可以通过this.$refs找到相关dom节点
+      // 修改数据会触发updated beforeUpdate钩子函数
+      console.log('mounted:')
+      console.log(this.$el)
+      console.log(this.$data)
+      console.log(this.message)
+    },
+    beforeUpdate() {
+      // data修改前
+    },
+    updated() {
+      // data修改后
+    },
+    beforeDestroy() {
+      // 实例销毁前
+    },
+    destroyed() {
+      // 实例销毁
+    },
+});
+</script>
+</html>
