@@ -11,11 +11,12 @@
     <div id="app">
       <p>姓名： {{ ob.name }}</p>
       <p>年龄： {{ ob.age }}</p>
-      <p>性别： {{ ob.sex }}</p>
+      <p v-if="!!ob.sex">性别： {{ ob.sex }}</p>
       <p v-if="!!ob.address">住址：{{ ob.address }}</p>
       <p v-if="!!ob.hobby">爱好：{{ ob.hobby }}</p>
       <button @click="addAddress">添加地址</button>
       <button @click="addAdsHb">添加地址和爱好</button>
+      <button @click="removeSex">删除性别</button>
     </div>
 </body>
 <script>
@@ -44,6 +45,9 @@ var vm = new Vue({
         
         // 解决方法：创造新对象
         this.ob = Object.assign({}, this.ob, {address: '深圳', hobby: '拳击'})
+      },
+      removeSex() {
+        this.$delete(this.ob, 'sex')
       }
     },
     created() {
