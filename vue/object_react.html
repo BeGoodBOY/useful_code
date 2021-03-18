@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象属性双向绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <p>姓名： {{ ob.name }}</p>
+      <p>年龄： {{ ob.age }}</p>
+      <p>性别： {{ ob.sex }}</p>
+      <p v-if="!!ob.address">住址：{{ ob.address }}</p>
+      <p v-if="!!ob.hobby">爱好：{{ ob.hobby }}</p>
+      <button @click="addAddress">添加地址</button>
+      <button @click="addAdsHb">添加地址和爱好</button>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: '#app',
+    data: {
+      ob: {
+        name: 'libo',
+        age: 333,
+        sex: 'man'
+      }
+    },
+    methods: {
+      addAddress() {
+        // this.ob.address = '北京'
+        // ob => {address: "北京", __ob__: Observer} ---- address非响应式
+
+        // 解决方法
+        // 1
+        Vue.set(this.ob, 'address', '北京')
+        // 2
+        // this.$set(this.ob, 'address', '上海')
+      },
+      addAdsHb() {
+        // Object.assign(this.ob, {address: '深圳', hobby: '拳击'}) //不触发
+        
+        // 解决方法：创造新对象
+        this.ob = Object.assign({}, this.ob, {address: '深圳', hobby: '拳击'})
+      }
+    },
+    created() {
+    },
+    mounted() {
+    }
+});
+</script>
+</html>
