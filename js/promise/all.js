@@ -4,6 +4,8 @@ let p1 = new Promise((resolve, reject) => {
 
 let p2 = new Promise((resolve, reject) => {
   resolve('p2 resolved')
+  console.log('after p2 resolve')
+  throw new Error()
 })
 
 let p3 = new Promise((resolve, reject) => {

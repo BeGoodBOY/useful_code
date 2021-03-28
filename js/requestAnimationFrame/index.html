@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据量大加载不卡顿方案</title>
+</head>
+<body>
+  <ul id="app">
+
+  </ul>
+</body>
+<script>
+  const total = 10000
+  const once = 30
+  const loopCount = Math.ceil(total/once)
+  let count = 0;
+
+  function render() {
+    var fragment = document.createDocumentFragment();
+    for(let i=0; i<once; i++) {
+      const li = document.createElement('li')
+      li.innerHTML = (10000*Math.random()).toFixed(2)
+      fragment.appendChild(li)
+    }
+    document.querySelector('#app').appendChild(fragment)
+    loop()
+  }
+
+  function loop() {
+    if(count < loopCount) {
+      requestAnimationFrame(render)
+      count++
+    }
+  }
+
+  loop()
+</script>
+</html>
