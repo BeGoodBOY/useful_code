@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>指令钩子和参数</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <div id="demo" v-demo:test.a.b.c="message"></div>
+      <div v-vshow="show">这个指令好用吗</div>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Heelo',
+      show: false
+    },
+    directives: {
+      demo: {
+        inserted: (el, binding, node, oldNode)=> {
+          // console.log(el); //挂载元素
+          // console.log(binding);
+          /* 
+          ** bindding对象内容
+          ** arg: "test"
+          ** expression: "message"
+          ** def: {inserted: ƒ}
+          ** modifiers: {a: true, b: true, c: true}
+          ** name: "demo"
+          ** rawName: "v-demo:test.a.b.c"
+          ** value: "Heelo"
+          */
+         console.log(node)
+        }
+      },
+      vshow: {
+        bind: (el, binding) => {
+          console.log('bind')
+          var isShow = binding.value;
+          !isShow ? el.style.display='none' : el.style.display='block';
+        },
+        inserted() {
+          console.log('inserted');
+        },
+        update: (el, binding) => {
+          console.log('update')
+          // var isShow = binding.value;
+          // !isShow ? el.style.display='none' : el.style.display='block';
+        },
+        componentUpdated(el, binding) {
+          console.log('componentUpdated');
+          var isShow = binding.value;
+          !isShow ? el.style.display='none' : el.style.display='block';
+        },
+        unbind() {
+          console.log('unbind')
+        }
+      }
+    }
+});
+</script>
+</html>
