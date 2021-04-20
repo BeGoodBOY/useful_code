@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>align-items</title>
+  <style>
+    .parent {
+      display: flex;
+      /* justify-content: center; */
+      /* align-items: center; */
+      width: 300px;
+      height: 120px;
+      background-color: #eee;
+    }
+    .child {
+      width: 50px;
+      height: 80px;
+      background: #ccc;
+      border: 1px solid #111;
+    }
+    .child:first-child {
+      height: 50px;
+    }
+    .child:last-child{
+      height: 90px;
+    }
+    .flex-start {
+      align-items: flex-start;
+    }
+    .flex-end {
+      align-items: flex-end;
+    }
+    .flex-center {
+      align-items: center;
+    }
+    .baseline {
+      align-items: baseline;
+    }
+    .stretch {
+      align-items: stretch;
+    }
+    p {
+      font-size: 12px;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body>
+  <h3>align-items: flex-start;</h3>
+  <div class="parent flex-start">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+  <h3>align-items: flex-end;</h3>
+  <div class="parent flex-end">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+  <h3>align-items: center;</h3>
+  <div class="parent flex-center">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+  <h3>align-items: baseline;</h3>
+  <div class="parent baseline">
+    <div class="child">
+      <p>4342</p>
+      <!-- <p>我是</p> -->
+    </div>
+    <div class="child">
+      <p>4342</p>
+      <p>我是</p>
+    </div>
+    <div class="child">
+      <p>4342</p>
+    </div>
+  </div>
+  <h3>align-items: stretch;</h3>
+  <div class="parent stretch">
+    <div class="child" style="height: auto;"></div>
+    <div class="child" style="height: auto;"></div>
+    <div class="child" style="height: auto;"></div>
+  </div>
+</body>
+</html>

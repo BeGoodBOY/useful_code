@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>justify-content</title>
+  <style>
+    .parent {
+      display: flex;
+      /* justify-content: center; */
+      /* align-items: center; */
+      width: 300px;
+      height: 100px;
+      background-color: #eee;
+    }
+    .child {
+      width: 50px;
+      height: 80px;
+      background: #ccc;
+      border: 1px solid #111;
+    }
+    .flex-start {
+      justify-content: flex-start;
+    }
+    .flex-end {
+      justify-content: flex-end;
+    }
+    .flex-center {
+      justify-content: center;
+    }
+    .space-between {
+      justify-content: space-between;
+    }
+    .space-around {
+      justify-content: space-around;
+    }
+  </style>
+</head>
+<body>
+  <h3>justify-content: flex-start;</h3>
+  <div class="parent flex-start">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+  <h3>justify-content: flex-end;</h3>
+  <div class="parent flex-end">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+  <h3>justify-content: center;</h3>
+  <div class="parent flex-center">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+  <h3>justify-content: space-between;</h3>
+  <div class="parent space-between">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+  <h3>justify-content: space-around;</h3>
+  <div class="parent space-around">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
+  </div>
+</body>
+</html>
