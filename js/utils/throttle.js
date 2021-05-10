@@ -1,0 +1,12 @@
+// 节流
+function throttle(fn, interval) {
+  let timer;
+  return function() {
+    if(timer) return;
+    timer = setTimeout(() => {
+      fn.apply(this, arguments);
+      timer = null;
+    }, interval);
+  }
+}
+
