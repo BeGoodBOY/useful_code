@@ -4,35 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>v-model模拟</title>
+    <title>v-model组件应用</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
     <div id="app">
-      <input id="demo" ref="input" v-vmodel="message"></input>
+      
     </div>
 </body>
 <script>
+Vue.component('base-checkbox', {
+  
+});
+
 var vm = new Vue({
     el: '#app',
     data: {
       message: 'hello',
     },
-    directives: {
-      vmodel: {
-        bind(el, ob) {
-          el.value = ob.value;
-          el.addEventListener('input', e=> {
-            console.log(ob)
-            vm[ob.expression] = e.target.value;
-            console.log(e.target.value)
-          });
-        },
-        update(el, ob) {
-          el.value = ob.value;
-        },
-      }
-    }
 });
 </script>
 </html>

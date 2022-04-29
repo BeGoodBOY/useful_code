@@ -6,7 +6,7 @@ let p1 = new Promise((resolve, reject) => {
 
 let p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('p1 failed')
+    reject('p2 failed')
   }, 200)
 })
 
